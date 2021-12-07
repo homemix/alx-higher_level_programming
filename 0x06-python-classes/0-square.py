@@ -1,10 +1,11 @@
 #!/usr/bin/python3
-"""Square Class
-This class don't do anything for the moment
-"""
+"""Documentation for a square class"""
 
 
-class Square:
-    pass
-
+class Square():
+    """Square class of a quadrilateral with four equal sides
+       Attributes:
+           None
+    """
+    
     
