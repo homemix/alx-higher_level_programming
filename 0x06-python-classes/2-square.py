@@ -10,16 +10,6 @@ class Square:
         """
         Initialize a Square class with attribute size.
         """
-        self.__size = size
-
-    @property
-    def size(self):
-        """ get the size attribute of this square"""
-        return self.__size
-
-    @size.setter
-    def size(self, value):
-        """Set the size attribute of this square"""
         if type(value) is not int:
             raise TypeError('size must be an integer')
         else:
@@ -27,3 +17,4 @@ class Square:
                 raise ValueError('size must be >= 0')
             else:
                 self.__size = value
+        self.__size = size
