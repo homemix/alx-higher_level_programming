@@ -1,8 +1,11 @@
 #!/usr/bin/python3
-class Square:
-    """
-    Empty class that defines a square 
+"""Documentation for a square class"""
+
+
+class Square():
+    """Square class of a quadrilateral with four equal sides
+       Attributes:
+           None
     """
     pass
-
     
