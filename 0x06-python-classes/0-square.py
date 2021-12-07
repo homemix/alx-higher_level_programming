@@ -1,10 +1,6 @@
 #!/usr/bin/python3
-
 class Square:
-    """Square class of a quadrilateral with four equal sides
-       Attributes:
-           None
-    """
+    """Empty class that defines a square"""
     pass
 
     
