@@ -1,4 +1,14 @@
 #!/usr/bin/python3
-class Square:
-    ''' a class to print square'''
-    pass
+"""Documentation for a square class"""
+
+
+class Square():
+    """Square class of a quadrilateral with four equal sides
+       Attributes:
+           None
+    """
+
+    def __init__(self):
+        pass
+
+    
