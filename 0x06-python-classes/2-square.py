@@ -10,7 +10,7 @@ class Square:
         """
         Initialize a Square class with attribute size.
         """
-        if type(size) is not int:
+        if type(size) != int:
             raise TypeError('size must be an integer')
         else:
             if size < 0:
