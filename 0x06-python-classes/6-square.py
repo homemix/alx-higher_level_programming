@@ -11,6 +11,7 @@ class Square:
         Initialize a Square class with attribute size.
         """
         self.__size = size
+        self.position = position
 
     @property
     def size(self):
