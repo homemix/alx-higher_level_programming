@@ -10,4 +10,4 @@ class Square:
         """
         Initialize a Square class with attribute size.
         """
-        self.size = size
+        self.__size = size
