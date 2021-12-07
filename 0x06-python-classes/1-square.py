@@ -1,8 +1,8 @@
 #!/usr/bin/python3
+"""Defines a class Square"""
+
+
 class Square:
-    """Square class of a quadrilateral with four equal sides
-           Attributes:
-               Size 
-        """
-    def __init__(self, size):
-        self.__size = size
+    """An empty Square class"""
+    def __init__(self,size):
+        self.size = size
