@@ -45,12 +45,16 @@ class Square:
 
     @property
     def position(self):
-        """ setter for position property"""
+        """getter of __position
+        Returns:
+            The position of the square in 2D space
+        """
         return self.__position
 
     @position.setter
     def position(self, value):
-        """getter for position property"""
+        """setter of __position
+        """
         if type(value) is not tuple or len(value) != 2 or \
                 type(value[0]) is not int or value[0] < 0 or \
                 type(value[1]) is not int or value[1] < 0:
