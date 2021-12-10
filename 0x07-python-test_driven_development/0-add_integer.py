@@ -2,7 +2,7 @@
 def add_integer(a, b=98):
     """
     a function to add two numbers
-    return sum of a and b parameters
+    return sum of a and b parameters 
     """
     if not isinstance(a, int) and not isinstance(a, float):
         raise TypeError("a must be an integer")
