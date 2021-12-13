@@ -1,8 +1,10 @@
 #!/usr/bin/python3
+"""
+a class representing a rectangle
+"""
+
+
 class Rectangle():
-    """ A class representing rectangles.  """
 
     def __init__(self):
         pass
-
-   
