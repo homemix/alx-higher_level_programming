@@ -8,7 +8,7 @@ This module provides a simple Rectangle class.
 class Rectangle:
     """A simple Rectangle class"""
     number_of_instances = 0
-    print_symbol ='#'
+    print_symbol = '#'
 
     def __init__(self, width=0, height=0):
         """ a rectangle initializes a rectangle"""
