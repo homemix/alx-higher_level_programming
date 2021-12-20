@@ -1,11 +1,9 @@
-# !/usr/bin/python3
+#!/usr/bin/python3
 """
-a base class for geometry
+Contains the class BaseGeometry
 """
 
 
 class BaseGeometry:
-    """
-    a base class for geometry 
-    """
+    """An empty class"""
     pass
