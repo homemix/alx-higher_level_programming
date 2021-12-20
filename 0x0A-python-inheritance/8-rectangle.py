@@ -2,7 +2,7 @@
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 """
-a class for rectangles 
+a class for rectangles  
 """
 
 
