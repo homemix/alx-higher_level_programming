@@ -1,12 +1,16 @@
-# !/usr/bin/python3
+#!/usr/bin/python3
 """
-A class to print sored list 
+contains the MyList class
 """
 
 
 class MyList(list):
-    """ a class to print a list"""
+    """a subclass of list"""
+
+    def __init__(self):
+        """initializes the object"""
+        super().__init__()
 
     def print_sorted(self):
-        """ print the sorted list"""
+        """prints the sorted list"""
         print(sorted(self))
