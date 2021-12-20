@@ -7,4 +7,3 @@ Get empty list
         []
         >>> my_list.print_sorted()
         []
-
