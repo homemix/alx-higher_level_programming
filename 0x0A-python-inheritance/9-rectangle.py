@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 """
-a class for rectangles  with inherited
+a class for rectangles  with inherited values from base geometry
 """
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 
 class Rectangle(BaseGeometry):
-    """Rectangle class that inherits from BaseGeometry"""
+    """Rectangle class that inherits from BaseGeometry and returns sare"""
 
     def __init__(self, width, height):
         """ initialize the class rectangle with height and width"""
