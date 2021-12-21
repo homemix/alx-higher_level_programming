@@ -3,23 +3,25 @@
 Adds all arguments to a Python list,
 and then save them to a file.
 """
-
 import sys
-import json
-import os.path
+from os.path import exists
 
-save_to_json_file = __import__("7-save_to_json_file").save_to_json_file
-load_from_json_file = __import__("8-load_from_json_file").load_from_json_file
 
-my_file = 'add_item.json'
+save_to_json_file = __import__('7-save_to_json_file').save_to_json_file
+load_from_json_file = __import__('8-load_from_json_file').load_from_json_file
 
-my_list = []
+filename = "add_item.json"
+if not exists(filename):
+    open(filename, "w", encoding="utf-8")
 
-if os.path.exists(my_file) and os.path.getsize(my_file) > 0:
-    my_list = load_from_json_file(my_file)
+saved_list = load_from_json_file(filename)
+to_save_list = []
 
-if len(sys.argv) > 1:
-    for elem in sys.argv[1:]:
-        my_list.append(elem)
+if saved_list is not None:
+    for e in saved_list:
+        to_save_list.append(e)
 
-save_to_json_file(my_list, my_file)
+for i in range(1, len(sys.argv)):
+    to_save_list.append(sys.argv[i])
+
+save_to_json_file(to_save_list, filename)
