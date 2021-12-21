@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import json
 
-""" a function to serialize an object  """
+""" a function to serialize an object  in python"""
 
 
 def to_json_string(my_obj):
