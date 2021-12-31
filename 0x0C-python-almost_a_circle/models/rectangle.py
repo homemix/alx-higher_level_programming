@@ -7,6 +7,7 @@ from models import Base
 
 class Rectangle(Base):
     """ initialize the representation class rectangle """
+
     def __init__(self, width, height, x=0, y=0, id=None):
         """ initialize the representation class rectangle """
         self.width = width
@@ -70,3 +71,7 @@ class Rectangle(Base):
         if value < 0:
             raise ValueError("y must be >= 0")
         self.__y = value
+
+    def area(self):
+        """ calculate the area of rectangle"""
+        return self.__width * self.__height
