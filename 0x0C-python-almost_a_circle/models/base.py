@@ -3,6 +3,7 @@
 This module contains the "Base" class
 """
 
+
 class Base:
     __nb_objects = 0
 
