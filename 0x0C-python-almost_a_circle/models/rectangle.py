@@ -90,3 +90,14 @@ class Rectangle(Base):
         """ return the string representation of the Rectangle"""
         return "{} ({}) {}/{} - {}/{}".format(self.__class__.__name__, self.id, self.__x, self.__y, self.__width,
                                               self.__height)
+
+    def update(self, *args):
+        if len(args) != 0:
+            try:
+                self.id = args[0]
+                self.__width = args[1]
+                self.__height = args[2]
+                self.__x = args[3]
+                self.__y = args[4]
+            except IndexError:
+                pass
