@@ -91,7 +91,7 @@ class Rectangle(Base):
         return "{} ({}) {}/{} - {}/{}".format(self.__class__.__name__, self.id, self.__x, self.__y, self.__width,
                                               self.__height)
 
-    def update(self, *args,**kwargs):
+    def update(self, *args, **kwargs):
         """ update the rectangle with keyword and non keyword arguments."""
         if len(kwargs) != 0:
             for k, v in kwargs.items():
@@ -105,3 +105,6 @@ class Rectangle(Base):
                 self.__y = args[4]
             except IndexError:
                 pass
+
+    def to_dictionary(self):
+        return self.__dict__
