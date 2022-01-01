@@ -92,7 +92,11 @@ class Rectangle(Base):
                                               self.__height)
 
     def update(self, *args):
-        if len(args) != 0:
+        """ update the rectangle with keyword and non keyword arguments."""
+        if len(kwargs) != 0:
+            for k, v in kwargs.items():
+                setattr(self, k, v)
+        elif len(args) != 0:
             try:
                 self.id = args[0]
                 self.__width = args[1]
