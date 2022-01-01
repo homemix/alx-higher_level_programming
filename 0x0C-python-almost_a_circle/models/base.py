@@ -14,3 +14,10 @@ class Base:
             self.id = self.__nb_objects
         else:
             self.id = id
+
+    def to_json_string(list_dictionaries):
+        """ convert list of dictionaries to json string"""
+        if len(list_dictionaries) == 0 or list_dictionaries is None:
+            return '[]'
+        return json.dumps(list_dictionaries)
+        
