@@ -6,7 +6,7 @@ from models import Base
 
 
 class Rectangle(Base):
-    """ initialize the representation class rectangle """
+    """ initialize the representation class rectangle  """
 
     def __init__(self, width, height, x=0, y=0, id=None):
         """ initialize the representation class rectangle """
