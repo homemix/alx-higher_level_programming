@@ -1,127 +1,109 @@
 #!/usr/bin/python3
-"""Unittest for class Square
 """
+Test for the Square class
+"""
+
 import unittest
-import os
-from io import StringIO
-from unittest.mock import patch
+import json
+from models import square
 from models.base import Base
-from models.rectangle import Rectangle
-from models.square import Square
+
+Square = square.Square
 
 
 class TestSquare(unittest.TestCase):
-    """Testing Square
-    """
+    """Test the functionality of the Square class"""
 
-    def tearDown(self):
-        """Tears down obj count
-        """
-
+    @classmethod
+    def setUpClass(cls):
+        """set up the tests"""
         Base._Base__nb_objects = 0
-        self.assertEqual(Base._Base__nb_objects, 0)
+        cls.s1 = Square(1)
+        cls.s2 = Square(2, 3)
 
-    def test_instance(self):
-        """Test instantiation
-        """
+    def test_id(self):
+        """Test for functioning ID"""
+        self.assertEqual(self.s1.id, 1)
+        self.assertEqual(self.s2.id, 2)
 
-        o1 = Square(5)
-        o2 = Square(id="hello", size=3)
-        with self.assertRaises(ValueError):
-            o3 = Square(-5, 3, 4)
-            o4 = Square(9.5, 9.3)
-            o5 = Square(float('inf'))
-            o6 = Square("string")
-            o9 = Square(None)
+    def test_size(self):
+        """Test for functioning size"""
+        self.assertEqual(self.s1.size, 1)
+        self.assertEqual(self.s2.size, 2)
 
+    def test_width(self):
+        self.assertEqual(self.s1.width, 1)
+        self.assertEqual(self.s2.width, 2)
+
+    def test_height(self):
+        """Test for functioning height"""
+        self.assertEqual(self.s1.height, 1)
+        self.assertEqual(self.s2.height, 2)
+
+    def test_x(self):
+        """Test for functioning x"""
+        self.assertEqual(self.s1.x, 0)
+        self.assertEqual(self.s2.x, 3)
+
+    def test_y(self):
+        """Test for functioning y"""
+        self.assertEqual(self.s1.y, 0)
+        self.assertEqual(self.s2.y, 0)
+
+    def mandatory_size(self):
+        """Test that width is a mandatory arg"""
         with self.assertRaises(TypeError):
-            o7 = Square(5, "hi")
-            o8 = Square(5, None)
-            o10 = Square(5, float('inf'))
-            o11 = Square(5, 9.5)
-            o12 = Square()
+            s = Square()
 
-        self.assertEqual(o1.id, 1)
-        self.assertEqual(o1._Base__nb_objects, 3)
-        self.assertEqual(o2.id, 'hello')
-        self.assertEqual(o2._Base__nb_objects, 3)
+    def size_typeerror(self):
+        """Test non-ints for size"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            s = Square("hello")
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            s = Square(True)
+
+    def test_x_typeerror(self):
+        """Test non-ints for x"""
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            s = Square(1, "hello")
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            s = Square(1, True)
+
+    def test_y_typeerror(self):
+        """Test non-ints for y"""
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            s = Square(1, 1, "hello")
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            s = Square(1, 1, True)
+
+    def test_size_valueerror(self):
+        """Test ints <= 0 for size"""
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            s = Square(-1)
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            s = Square(0)
+
+    def test_x_valueerror(self):
+        """Test ints < 0 for x"""
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
+            s = Square(1, -1)
+
+    def test_y_valueerror(self):
+        """Test ints <= 0 for y"""
+        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
+            s = Square(1, 1, -1)
 
     def test_area(self):
-        """Testing area()
-        """
+        """test area"""
+        self.assertEqual(self.s1.area(), 1)
+        self.assertEqual(self.s2.area(), 4)
 
-        o1 = Square(5)
-        o2 = Square(999, 0, 0, "helloo")
-        o3 = Square(id="hello", size=3, x=1, y=0)
+    def test_area_args(self):
+        """Test too many args for area()"""
+        with self.assertRaises(TypeError):
+            a = self.s1.area(1)
 
-        self.assertEqual(o1.area(), 25)
-        self.assertEqual(o2.area(), 998001)
-        self.assertEqual(o3.area(), 9)
-
-    def test_display(self):
-        """Testing display()
-        """
-
-        o1 = Square(4)
-        o2 = Square(id="hello", size=3, x=1, y=0)
-
-        with patch('sys.stdout', new=StringIO()) as fakeOutput:
-            o1.display()
-            self.assertEqual(fakeOutput.getvalue(), '####\n####\n####\n####\n')
-
-        with patch('sys.stdout', new=StringIO()) as fakeOutput:
-            o2.display()
-            self.assertEqual(fakeOutput.getvalue(), ' ###\n ###\n ###\n')
-
-    def test_str(self):
-        """Testing __str__()
-        """
-
-        o1 = Square(5)
-        o2 = Square(3, 2)
-        o3 = Square(1, 2, 3, 4)
-        o4 = Square(id="hello", size=3, x=1, y=0)
-
-        self.assertEqual(o1.__str__(), '[Square] (1) 0/0 - 5')
-        self.assertEqual(o2.__str__(), '[Square] (2) 2/0 - 3')
-        self.assertEqual(o3.__str__(), '[Square] (4) 2/3 - 1')
-        self.assertEqual(o4.__str__(), '[Square] (hello) 1/0 - 3')
-
-    def test_update(self):
-        """Testing update()
-        """
-
-        o1 = Square(5)
-        o2 = Square(3, 2)
-        o3 = Square(1, 2, 3, 4)
-        o4 = Square(id="hello", size=3, x=1, y=0)
-
-        o1.update(6, 1, 2, 8)
-        self.assertEqual(o1.__str__(), '[Square] (6) 2/8 - 1')
-        o2.update(1, 2, 3, id="hello")
-        self.assertEqual(o2.__str__(), '[Square] (hello) 2/0 - 3')
-        with self.assertRaises(ValueError):
-            o3.update("hello", -5)
-            o4.update(x=9.5)
-
-    def test_to_dictionary(self):
-        """Testing to_dictionary()
-        """
-
-        o1 = Square(5)
-        o2 = Square(5, 6)
-        o3 = Square(1, 2, 3, 5)
-        o4 = Square(3, 2, id="holberton")
-
-        d1 = {'id': 1, 'size': 5, 'x': 0, 'y': 0}
-        d2 = {'id': 2, 'size': 5, 'x': 6, 'y': 0}
-        d3 = {'id': 5, 'size': 1, 'x': 2, 'y': 3}
-        d4 = {'id': 'holberton', 'size': 3, 'x': 2, 'y': 0}
-
-        self.assertDictEqual(o1.to_dictionary(), d1)
-        self.assertDictEqual(o2.to_dictionary(), d2)
-        self.assertDictEqual(o3.to_dictionary(), d3)
-        self.assertDictEqual(o4.to_dictionary(), d4)
-
-if __name__ == '__main__':
-    unittest.main()
+    def test_display_too_many_args(self):
+        """Test display with too many args"""
+        with self.assertRaises(TypeError):
+            self.s1.display(1)
