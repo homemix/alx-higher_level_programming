@@ -21,3 +21,4 @@ if __name__ == "__main__":
         print(row[0], end=", ")
     print("\b\b")
     cursor.close()
+    db.close()
