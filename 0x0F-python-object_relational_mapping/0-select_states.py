@@ -7,10 +7,8 @@ import MySQLdb
 import sys
 
 if __name__ == "__main__":
-    """
-    main function to execute the script
-    """
-    db = MySQLdb.connect(host="localhost", port=3306, user=sys.argv[1], passwd=sys.argv[2], db=sys.argv[3])
+    db = MySQLdb.connect(host="localhost", port=3306, user=sys.argv[1], passwd=sys.argv[2], db=sys.argv[3],
+                         charset="utf8")
     cursor = db.cursor()
     cursor.execute("select * from `states` order by `id`")
     rows = cursor.fetchall()
