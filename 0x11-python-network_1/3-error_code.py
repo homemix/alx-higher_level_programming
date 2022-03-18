@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Send request"""
 import urllib.request
-#!/usr/bin/python3
+
 """
 request a body if error display statue code
 """
