@@ -9,7 +9,7 @@ request.get(url, function (err, response, body) {
   }
   const data = JSON.parse(body);
   for (let i = 0; data.results[i] !== undefined; i++) {
-    if (data.results[i].characters.includes('https://swapi-api.hbtn.io/api/people/18/')) {
+    if (data.results[i].characters.includes('https://swapi-api.hbtn.io/api/films/')) {
       count++;
     }
   }
